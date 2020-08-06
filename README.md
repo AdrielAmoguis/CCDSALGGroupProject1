@@ -10,8 +10,8 @@
 
 ### Bubble Sort (Ben)
 - [COMPLETE] Assign Algorithm to Group Member
-- [INCOMPLETE] Research Code Snippets & Study Their Implementation
-- [INCOMPLETE] Modify Source Codes As Specified
+- [COMPLETE] Research Code Snippets & Study Their Implementation
+- [COMPLETE] Modify Source Codes As Specified
 - [INCOMPLETE] Testing Phase
 - [INCOMPLETE] Documentation
 
@@ -36,11 +36,11 @@
 - [INCOMPLETE] Testing Phase
 - [INCOMPLETE] Documentation
 
-### Algorithm 5 (Ben)
-- [INCOMPLETE] Search for an Algorithm
+### Quick Sort (Ben)
+- [COMPLETE] Search for an Algorithm
 - [COMPLETE] Assign Algorithm to Group Member
-- [INCOMPLETE] Research Code Snippets & Study Their Implementation
-- [INCOMPLETE] Modify Source Codes As Specified
+- [COMPLETE] Research Code Snippets & Study Their Implementation
+- [COMPLETE | CAN IMPROVE] Modify Source Codes As Specified
 - [INCOMPLETE] Testing Phase
 - [INCOMPLETE] Documentation
 
