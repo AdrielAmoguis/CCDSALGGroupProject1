@@ -28,7 +28,7 @@
 //#include "insertion.c"
 //#include "selection.c"
 //#include "merge.c"
-//#include "algo5.c"
+#include "quick.c"
 //#include "algo6.c"
 
 // Macros
@@ -289,14 +289,15 @@ int main()
         }
         counter = 0;
         free(dataCopy);
+        */
 
         // Algo #5 Testing
         dataCopy = createArrCopy(testArr, dataSize);
-        printf("\n===== ALGO5 SORT START =====\n");
+        printf("\n===== QUICKSORT START =====\n");
         clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
-        //counter = bubbleSort(dataCopy, dataSize);         CALL ALGO #5 HERE
+        counter = quickSort(dataCopy, 0, dataSize-1);    
         clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
-        printf("\n===== ALGO5 SORT END =====\n");
+        printf("\n===== QUICKSORT END =====\n");
         if(!isAFK)
         {
             printf("Print sorted array? [y/N]: ");
@@ -321,7 +322,7 @@ int main()
         metSums[4] += timeElapsed;
         if(doLogging)
         {
-            strcpy(log.algoName, "ALGO5");
+            strcpy(log.algoName, "QUICKSORT");
             log.count = counter;
             log.machineExecutionTime = timeElapsed;
             generateLog(log);
@@ -329,6 +330,7 @@ int main()
         counter = 0;
         free(dataCopy);
 
+        /*
         // Algo #6 Testing
         dataCopy = createArrCopy(testArr, dataSize);
         printf("\n===== ALGO6 SORT START =====\n");
@@ -426,8 +428,8 @@ int main()
     countAve = counterSums[4] / nRuns;
     printf("Algo5 Sort Average MET = %lf\n", timeAve);
     printf("Algo5 Sort Average TFC = %llu\n\n", countAve);
-    fprintf(fp, "Algo5 Sort Average MET = %lf\n", timeAve);
-    fprintf(fp, "Algo5 Sort Average TFC = %llu\n\n", countAve);
+    fprintf(fp, "QuickSort Average MET = %lf\n", timeAve);
+    fprintf(fp, "QuickSort Average TFC = %llu\n\n", countAve);
 
     // Algo6
     timeAve = metSums[5] / nRuns;

@@ -4,15 +4,16 @@
 
 #include <stdio.h>
 
-int quickCount = 0;
+unsigned long long quickCount = 0;
 
 // A utility function to swap two elements 
+/*
 void swap(int* a, int* b) 
 { 
     int t = *a; 
     *a = *b; 
     *b = t; 
-} 
+} /*
   
 /* This function TAKES LAST ELEMENT AS PIVOT, places 
    the pivot element at its correct position in sorted 
@@ -42,7 +43,7 @@ int partition (int arr[], int low, int high)
  arr[] --> Array to be sorted, 
   low  --> Starting index, 
   high  --> Ending index */
-void quickSort(int arr[], int low, int high) 
+unsigned long long quickSort(int arr[], int low, int high) 
 { 
     if (low < high)                             // recursive case
     { 
@@ -55,4 +56,5 @@ void quickSort(int arr[], int low, int high)
         quickSort(arr, low, pi - 1);        // left side of partition index
         quickSort(arr, pi + 1, high);       // right side of partition index 
     } 
+    return quickCount;
 } 
