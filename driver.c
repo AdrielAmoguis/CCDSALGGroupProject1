@@ -15,6 +15,13 @@
 #include <time.h>
 #include <stdbool.h>
 
+// This will be removed after all algos are implemented
+#if _WIN32 || _WIN64
+    #include <windows.h>
+#else
+    #include <unistd.h>
+#endif
+
 // Algorithms
 #include "GenerateData.c"
 #include "bubble.c"
@@ -25,7 +32,7 @@
 //#include "algo6.c"
 
 // Macros
-#define DATA_LEN 2500
+#define INTERVAL 5
 
 // Struct
 typedef struct
@@ -87,12 +94,22 @@ int main()
     double timeElapsed;
     DataLog log;
 
+    unsigned long long counterSums[6] = {0,0,0,0,0,0};
+    double metSums[6] = {0,0,0,0,0,0};
+
     printf("Run for how many times? : ");
     scanf("%d", &nRuns);
+
+    printf("Enter n: ");
+    scanf("%d", &dataSize);
+    testArr = malloc(dataSize * sizeof(int));
+    log.sampleSize = dataSize;
+
     printf("Turn on automated mode? [Y/n]: ");
     scanf(" %c", &cChoice);
     if(cChoice == 'n' || cChoice == 'N')
         isAFK = false;
+        
     printf("Log results? [y/N]: ");
     scanf(" %c", &cChoice);
     if(cChoice == 'y' || cChoice == 'Y')
@@ -101,11 +118,7 @@ int main()
 
     for(programRun = 0; programRun < nRuns; programRun++)
     {
-        printf("Program Iteration M = %d of %d\n\n", programRun+1, nRuns);
-        printf("Enter n: ");
-        scanf("%d", &dataSize);
-        testArr = malloc(dataSize * sizeof(int));
-        log.sampleSize = dataSize;
+        printf("\nProgram Iteration M = %d of %d\n\n", programRun+1, nRuns);
 
         GenerateData(testArr, dataSize);
 
@@ -142,6 +155,8 @@ int main()
         nanoseconds = end.tv_nsec - begin.tv_nsec;
         timeElapsed = seconds + nanoseconds*1e-9;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+        counterSums[0] += counter;
+        metSums[0] += timeElapsed;
         if(doLogging)
         {
             strcpy(log.algoName, "BUBBLE SORT");
@@ -175,6 +190,8 @@ int main()
         nanoseconds = end.tv_nsec - begin.tv_nsec;
         timeElapsed = seconds + nanoseconds*1e-9;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+        counterSums[1] += counter;
+        metSums[1] += timeElapsed;
         if(doLogging)
         {
             strcpy(log.algoName, "INSERTION SORT");
@@ -207,6 +224,8 @@ int main()
         nanoseconds = end.tv_nsec - begin.tv_nsec;
         timeElapsed = seconds + nanoseconds*1e-9;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+        counterSums[2] += counter;
+        metSums[2] += timeElapsed;
         if(doLogging)
         {
             strcpy(log.algoName, "SELECTION SORT");
@@ -239,6 +258,8 @@ int main()
         nanoseconds = end.tv_nsec - begin.tv_nsec;
         timeElapsed = seconds + nanoseconds*1e-9;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+        counterSums[3] += counter;
+        metSums[3] += timeElapsed;
         if(doLogging)
         {
             strcpy(log.algoName, "MERGE SORT");
@@ -271,6 +292,8 @@ int main()
         nanoseconds = end.tv_nsec - begin.tv_nsec;
         timeElapsed = seconds + nanoseconds*1e-9;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+        counterSums[4] += counter;
+        metSums[4] += timeElapsed;
         if(doLogging)
         {
             strcpy(log.algoName, "ALGO5");
@@ -302,7 +325,9 @@ int main()
         seconds = end.tv_sec - begin.tv_sec;
         nanoseconds = end.tv_nsec - begin.tv_nsec;
         timeElapsed = seconds + nanoseconds*1e-9;
-        printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+        printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);.
+        counterSums[5] += counter;
+        metSums[5] += timeElapsed;
         if(doLogging)
         {
             strcpy(log.algoName, "ALGO6");
@@ -315,8 +340,74 @@ int main()
         */
         if(!isAFK)
             system("PAUSE");
+
+        // This will delay code execution by 5 seconds to reset the randomizer seed
+        // This will be removed after all algos are implemented
+        #if _WIN32 || _WIN64
+            Sleep(INTERVAL*1000);
+        #else 
+            sleep(INTERVAL);
+        #endif
     }
     
+    // Compute for the MET and TFC averages per algorithm
+    double timeAve;
+    unsigned long long countAve;
+
+    FILE *fp = fopen("testLog.txt", "a");
+    printf("\nTest Summary:\n\n");
+    fprintf(fp, "\n\nTest Summary:\n");
+
+    // Bubble Sort
+    timeAve = metSums[0] / nRuns;
+    countAve = counterSums[0] / nRuns;
+    printf("Bubble Sort Average MET = %lf\n", timeAve);
+    printf("Bubble Sort Average TFC = %ld\n\n", countAve);
+    fprintf(fp, "Bubble Sort Average MET = %lf\n", timeAve);
+    fprintf(fp, "Bubble Sort Average TFC = %ld\n\n", countAve);
+
+    // Insertion Sort
+    timeAve = metSums[1] / nRuns;
+    countAve = counterSums[1] / nRuns;
+    printf("Insertion Sort Average MET = %lf\n", timeAve);
+    printf("Insertion Sort Average TFC = %ld\n\n", countAve);
+    fprintf(fp, "Insertion Sort Average MET = %lf\n", timeAve);
+    fprintf(fp, "Insertion Sort Average TFC = %ld\n\n", countAve);
+
+    // Selection Sort
+    timeAve = metSums[2] / nRuns;
+    countAve = counterSums[2] / nRuns;
+    printf("Selection Sort Average MET = %lf\n", timeAve);
+    printf("Selection Sort Average TFC = %ld\n\n", countAve);
+    fprintf(fp, "Selection Sort Average MET = %lf\n", timeAve);
+    fprintf(fp, "Selection Sort Average TFC = %ld\n\n", countAve);
+
+    // Merge Sort
+    timeAve = metSums[3] / nRuns;
+    countAve = counterSums[3] / nRuns;
+    printf("Merge Sort Average MET = %lf\n", timeAve);
+    printf("Merge Sort Average TFC = %ld\n\n", countAve);
+    fprintf(fp, "Merge Sort Average MET = %lf\n", timeAve);
+    fprintf(fp, "Merge Sort Average TFC = %ld\n\n", countAve);
+
+    // Algo5
+    timeAve = metSums[4] / nRuns;
+    countAve = counterSums[4] / nRuns;
+    printf("Algo5 Sort Average MET = %lf\n", timeAve);
+    printf("Algo5 Sort Average TFC = %ld\n\n", countAve);
+    fprintf(fp, "Algo5 Sort Average MET = %lf\n", timeAve);
+    fprintf(fp, "Algo5 Sort Average TFC = %ld\n\n", countAve);
+
+    // Algo6
+    timeAve = metSums[5] / nRuns;
+    countAve = counterSums[5] / nRuns;
+    printf("Algo6 Sort Average MET = %lf\n", timeAve);
+    printf("Algo6 Sort Average TFC = %ld\n\n", countAve);
+    fprintf(fp, "Algo6 Sort Average MET = %lf\n", timeAve);
+    fprintf(fp, "Algo6 Sort Average TFC = %ld\n\n", countAve);
+
+    fclose(fp);
+
     system("PAUSE");
 
     free(testArr);
