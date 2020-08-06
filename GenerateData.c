@@ -1,5 +1,4 @@
 #include <stdint.h>
-#include <time.h>
 
 // Maximum Data Value
 #define MAXVAL 1000000
@@ -25,7 +24,7 @@ void GenerateData(int * arr, int size)
     int i;
     pcg32_random_t seed;
     srand((int) time(NULL));
-    seed.state = rand();
+    seed.state = rand() * rand() * rand() * rand();
 
     for(i = 0; i < size; i++)
     {
