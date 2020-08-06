@@ -2,7 +2,7 @@
 	Bubble sort algorithm retrieved from: https://www.geeksforgeeks.org/bubble-sort/
 */
 
-#include <stdio.h>
+#include <stdbool.h>
 
 void swap(int *xp, int *yp) 
 { 
@@ -12,7 +12,7 @@ void swap(int *xp, int *yp)
 } 
   
 // An optimized version of Bubble Sort 
-void bubbleSort(int arr[], int n) 
+int bubbleSort(int arr[], int n) 
 { 
    int i, j, counter = 0;
    bool swapped; 
@@ -34,6 +34,7 @@ void bubbleSort(int arr[], int n)
      if (swapped == false) 
         break; 
    } 
+   return counter;
 } 
   
 /* Function to print an array */
@@ -44,5 +45,3 @@ void printArray(int arr[], int size)
         printf("%d ", arr[i]); 
     printf("n"); 
 } 
-  
-
