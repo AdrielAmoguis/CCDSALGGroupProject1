@@ -2,8 +2,6 @@
 	Bubble sort algorithm retrieved from: https://www.geeksforgeeks.org/bubble-sort/
 */
 
-#include <stdbool.h>
-
 void swap(int *xp, int *yp) 
 { 
     int temp = *xp; 
@@ -12,9 +10,10 @@ void swap(int *xp, int *yp)
 } 
   
 // An optimized version of Bubble Sort 
-int bubbleSort(int arr[], int n) 
+long unsigned int bubbleSort(int arr[], int n) 
 { 
-   int i, j, counter = 0;
+   int i, j;
+   long unsigned int counter = 0;
    bool swapped; 
    for (i = 0; i < n-1; i++) 
    { 
