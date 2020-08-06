@@ -1,4 +1,10 @@
+/*
+    Retrieved from: https://www.geeksforgeeks.org/quick-sort/
+*/
+
 #include <stdio.h>
+
+int quickCount = 0;
 
 // A utility function to swap two elements 
 void swap(int* a, int* b) 
@@ -19,7 +25,8 @@ int partition (int arr[], int low, int high)
     int i = (low - 1);  // Index of smaller element 
   
     for (int j = low; j <= high- 1; j++) 
-    { 
+    {
+        quickCount += 1;                                        // counter variable here, comparisons for n elements occur here, not quickSort
         // If current element is smaller than the pivot 
         if (arr[j] < pivot) 
         { 
@@ -37,15 +44,15 @@ int partition (int arr[], int low, int high)
   high  --> Ending index */
 void quickSort(int arr[], int low, int high) 
 { 
-    if (low < high) 
+    if (low < high)                             // recursive case
     { 
         /* pi is partitioning index, arr[p] is now 
            at right place */
-        int pi = partition(arr, low, high); 
-  
+        int pi = partition(arr, low, high);    
+        
         // Separately sort elements before 
         // partition and after partition 
-        quickSort(arr, low, pi - 1); 
-        quickSort(arr, pi + 1, high); 
+        quickSort(arr, low, pi - 1);        // left side of partition index
+        quickSort(arr, pi + 1, high);       // right side of partition index 
     } 
 } 
