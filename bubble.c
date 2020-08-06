@@ -10,7 +10,7 @@ void swap(int *xp, int *yp)
 } 
   
 // An optimized version of Bubble Sort 
-long unsigned int bubbleSort(int arr[], int n) 
+unsigned long long bubbleSort(int arr[], int n) 
 { 
    int i, j;
    long unsigned int counter = 0;

@@ -1,3 +1,14 @@
+/*
+    CCDSALG PROJECT 1 DRIVER EXECUTABLE
+    Authors (S14): Amoguis, Sun, Palmares
+
+    Summary:
+        This driver file iterates through all the sorting algorithms
+        with randomized values each iteration and records all the MET
+        and TFC data into a text file named "testLog.txt" after each
+        algortihm runs. File writing is in append mode.
+*/
+
 // Standard Library Imports
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,6 +26,33 @@
 
 // Macros
 #define DATA_LEN 2500
+
+// Struct
+typedef struct
+{
+    // Algorithm Name
+    char algoName[31];
+    // Sample Size
+    int sampleSize;
+    // MET
+    double machineExecutionTime;
+    // Frequency Count
+    long unsigned int count;
+} DataLog;
+
+void generateLog(DataLog data)
+{
+    FILE *fp = fopen("testLog.txt", "a");
+    time_t t;
+    time(&t);
+    fprintf(fp, "===== %s =====\n", data.algoName);
+    fprintf(fp, "Sample Size: %d\n", data.sampleSize);
+    fprintf(fp, "MET: %lf\n", data.machineExecutionTime);
+    fprintf(fp, "TFC: %ld\n", data.count);
+    fprintf(fp, "Tested on: %s\n", ctime(&t));
+    fprintf(fp, "==========\n");
+    fclose(fp);
+}
 
 void printArrayData(int * arr, int size)
 {
@@ -36,18 +74,18 @@ int * createArrCopy(int * arr, int size)
 
 int main()
 {
-    bool isAFK = true;
-    int nRuns, programRun;
-    int dataSize;
+    bool isAFK = true, doLogging = false;
+    int nRuns, programRun, dataSize;
     int * testArr;
     int * dataCopy;
-    long unsigned int counter;
+    unsigned long long counter;
     int i;
     char cChoice;
     struct timespec begin, end;
     int seconds;
     long long unsigned int nanoseconds;
     double timeElapsed;
+    DataLog log;
 
     printf("Run for how many times? : ");
     scanf("%d", &nRuns);
@@ -55,14 +93,19 @@ int main()
     scanf(" %c", &cChoice);
     if(cChoice == 'n' || cChoice == 'N')
         isAFK = false;
+    printf("Log results? [y/N]: ");
+    scanf(" %c", &cChoice);
+    if(cChoice == 'y' || cChoice == 'Y')
+        doLogging = true;
     printf("=============================\n");
 
     for(programRun = 0; programRun < nRuns; programRun++)
     {
-        printf("Program Iteration %d\n", programRun+1);
+        printf("Program Iteration M = %d of %d\n\n", programRun+1, nRuns);
         printf("Enter n: ");
         scanf("%d", &dataSize);
         testArr = malloc(dataSize * sizeof(int));
+        log.sampleSize = dataSize;
 
         GenerateData(testArr, dataSize);
 
@@ -99,6 +142,13 @@ int main()
         nanoseconds = end.tv_nsec - begin.tv_nsec;
         timeElapsed = seconds + nanoseconds*1e-9;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+        if(doLogging)
+        {
+            strcpy(log.algoName, "BUBBLE SORT");
+            log.count = counter;
+            log.machineExecutionTime = timeElapsed;
+            generateLog(log);
+        }
         counter = 0;
         free(dataCopy);
 
@@ -125,6 +175,13 @@ int main()
         nanoseconds = end.tv_nsec - begin.tv_nsec;
         timeElapsed = seconds + nanoseconds*1e-9;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+        if(doLogging)
+        {
+            strcpy(log.algoName, "INSERTION SORT");
+            log.count = counter;
+            log.machineExecutionTime = timeElapsed;
+            generateLog(log);
+        }
         counter = 0;
         free(dataCopy);
 
@@ -150,6 +207,13 @@ int main()
         nanoseconds = end.tv_nsec - begin.tv_nsec;
         timeElapsed = seconds + nanoseconds*1e-9;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+        if(doLogging)
+        {
+            strcpy(log.algoName, "SELECTION SORT");
+            log.count = counter;
+            log.machineExecutionTime = timeElapsed;
+            generateLog(log);
+        }
         counter = 0;
         free(dataCopy);
 
@@ -175,6 +239,13 @@ int main()
         nanoseconds = end.tv_nsec - begin.tv_nsec;
         timeElapsed = seconds + nanoseconds*1e-9;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+        if(doLogging)
+        {
+            strcpy(log.algoName, "MERGE SORT");
+            log.count = counter;
+            log.machineExecutionTime = timeElapsed;
+            generateLog(log);
+        }
         counter = 0;
         free(dataCopy);
 
@@ -200,6 +271,13 @@ int main()
         nanoseconds = end.tv_nsec - begin.tv_nsec;
         timeElapsed = seconds + nanoseconds*1e-9;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+        if(doLogging)
+        {
+            strcpy(log.algoName, "ALGO5");
+            log.count = counter;
+            log.machineExecutionTime = timeElapsed;
+            generateLog(log);
+        }
         counter = 0;
         free(dataCopy);
 
@@ -225,13 +303,21 @@ int main()
         nanoseconds = end.tv_nsec - begin.tv_nsec;
         timeElapsed = seconds + nanoseconds*1e-9;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+        if(doLogging)
+        {
+            strcpy(log.algoName, "ALGO6");
+            log.count = counter;
+            log.machineExecutionTime = timeElapsed;
+            generateLog(log);
+        }
         counter = 0;
         free(dataCopy);
         */
-
-        system("PAUSE");
+        if(!isAFK)
+            system("PAUSE");
     }
     
+    system("PAUSE");
 
     free(testArr);
     return 0;
