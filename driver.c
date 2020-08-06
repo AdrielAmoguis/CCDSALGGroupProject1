@@ -33,6 +33,7 @@
 
 // Macros
 #define INTERVAL 2
+#define LOGNAME "OutputData.csv"
 
 // Struct
 typedef struct
@@ -49,15 +50,10 @@ typedef struct
 
 void generateLog(DataLog data)
 {
-    FILE *fp = fopen("testLog.txt", "a");
+    FILE *fp = fopen(LOGNAME, "a");
     time_t t;
     time(&t);
-    fprintf(fp, "===== %s =====\n", data.algoName);
-    fprintf(fp, "Sample Size: %d\n", data.sampleSize);
-    fprintf(fp, "MET: %lf\n", data.machineExecutionTime);
-    fprintf(fp, "TFC: %llu\n", data.count);
-    fprintf(fp, "Tested on: %s\n", ctime(&t));
-    fprintf(fp, "==========\n");
+    fprintf(fp, "%s,%d,%lf,%llu,%s", data.algoName, data.sampleSize, data.machineExecutionTime, data.count, ctime(&t));
     fclose(fp);
 }
 
@@ -408,7 +404,7 @@ int main()
         double timeAve;
         unsigned long long countAve;
 
-        FILE *fp = fopen("testLog.txt", "a");
+        FILE *fp = fopen(LOGNAME, "a");
         printf("\nTest Summary:\n\n");
         time_t currTime; time(&currTime);
         fprintf(fp, "\n\nTest Summary:\n", ctime(&currTime));
@@ -418,48 +414,50 @@ int main()
         countAve = counterSums[0] / nRuns;
         printf("Bubble Sort Average MET = %lf\n", timeAve);
         printf("Bubble Sort Average TFC = %llu\n\n", countAve);
-        fprintf(fp, "Bubble Sort Average MET = %lf\n", timeAve);
-        fprintf(fp, "Bubble Sort Average TFC = %llu\n\n", countAve);
+        fprintf(fp, "Bubble Sort Average MET,%lf\n", timeAve);
+        fprintf(fp, "Bubble Sort Average TFC,%llu\n\n", countAve);
 
         // Insertion Sort
         timeAve = metSums[1] / nRuns;
         countAve = counterSums[1] / nRuns;
         printf("Insertion Sort Average MET = %lf\n", timeAve);
         printf("Insertion Sort Average TFC = %llu\n\n", countAve);
-        fprintf(fp, "Insertion Sort Average MET = %lf\n", timeAve);
-        fprintf(fp, "Insertion Sort Average TFC = %llu\n\n", countAve);
+        fprintf(fp, "Insertion Sort Average MET,%lf\n", timeAve);
+        fprintf(fp, "Insertion Sort Average TFC,%llu\n\n", countAve);
 
         // Selection Sort
         timeAve = metSums[2] / nRuns;
         countAve = counterSums[2] / nRuns;
         printf("Selection Sort Average MET = %lf\n", timeAve);
         printf("Selection Sort Average TFC = %llu\n\n", countAve);
-        fprintf(fp, "Selection Sort Average MET = %lf\n", timeAve);
-        fprintf(fp, "Selection Sort Average TFC = %llu\n\n", countAve);
+        fprintf(fp, "Selection Sort Average MET,%lf\n", timeAve);
+        fprintf(fp, "Selection Sort Average TFC,%llu\n\n", countAve);
 
         // Merge Sort
         timeAve = metSums[3] / nRuns;
         countAve = counterSums[3] / nRuns;
         printf("Merge Sort Average MET = %lf\n", timeAve);
         printf("Merge Sort Average TFC = %llu\n\n", countAve);
-        fprintf(fp, "Merge Sort Average MET = %lf\n", timeAve);
-        fprintf(fp, "Merge Sort Average TFC = %llu\n\n", countAve);
+        fprintf(fp, "Merge Sort Average MET,%lf\n", timeAve);
+        fprintf(fp, "Merge Sort Average TFC,%llu\n\n", countAve);
 
         // Algo5
         timeAve = metSums[4] / nRuns;
         countAve = counterSums[4] / nRuns;
         printf("Algo5 Sort Average MET = %lf\n", timeAve);
         printf("Algo5 Sort Average TFC = %llu\n\n", countAve);
-        fprintf(fp, "QuickSort Average MET = %lf\n", timeAve);
-        fprintf(fp, "QuickSort Average TFC = %llu\n\n", countAve);
+        fprintf(fp, "QuickSort Average MET,%lf\n", timeAve);
+        fprintf(fp, "QuickSort Average TFC,%llu\n\n", countAve);
 
         // Algo6
         timeAve = metSums[5] / nRuns;
         countAve = counterSums[5] / nRuns;
         printf("Algo6 Sort Average MET = %lf\n", timeAve);
         printf("Algo6 Sort Average TFC = %llu\n\n", countAve);
-        fprintf(fp, "Algo6 Sort Average MET = %lf\n", timeAve);
-        fprintf(fp, "Algo6 Sort Average TFC = %llu\n\n", countAve);
+        fprintf(fp, "Algo6 Sort Average MET,%lf\n", timeAve);
+        fprintf(fp, "Algo6 Sort Average TFC,%llu\n\n", countAve);
+
+        fprintf(fp, "\nITERATION END\n\n\n");
 
         fclose(fp);
         free(testArr);
