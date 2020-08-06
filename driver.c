@@ -44,7 +44,7 @@ typedef struct
     // MET
     double machineExecutionTime;
     // Frequency Count
-    long unsigned int count;
+    unsigned long long count;
 } DataLog;
 
 void generateLog(DataLog data)
@@ -55,7 +55,7 @@ void generateLog(DataLog data)
     fprintf(fp, "===== %s =====\n", data.algoName);
     fprintf(fp, "Sample Size: %d\n", data.sampleSize);
     fprintf(fp, "MET: %lf\n", data.machineExecutionTime);
-    fprintf(fp, "TFC: %ld\n", data.count);
+    fprintf(fp, "TFC: %llu\n", data.count);
     fprintf(fp, "Tested on: %s\n", ctime(&t));
     fprintf(fp, "==========\n");
     fclose(fp);
@@ -135,11 +135,11 @@ int main()
 
         // Bubble Sort Testing
         dataCopy = createArrCopy(testArr, dataSize);
-        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
         printf("\n===== BUBBLE SORT START =====\n");
+        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
         counter = bubbleSort(dataCopy, dataSize);
-        printf("\n===== BUBBLE SORT END =====\n");
         clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
+        printf("\n===== BUBBLE SORT END =====\n");
         if(!isAFK)
         {
             printf("Print sorted array? [y/N]: ");
@@ -150,11 +150,16 @@ int main()
                 printArrayData(dataCopy, dataSize);
             }
         }
-        printf("\nCounter: %d\n", counter);
+        printf("\nCounter: %llu\n", counter);
         seconds = end.tv_sec - begin.tv_sec;
         nanoseconds = end.tv_nsec - begin.tv_nsec;
-        timeElapsed = seconds + nanoseconds*1e-9;
-        printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+        if(begin.tv_nsec > end.tv_nsec) // Clock underflow
+        {
+            seconds--;
+            nanoseconds += 1000000000;
+        }
+        timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
+        printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * (double)1000);
         counterSums[0] += counter;
         metSums[0] += timeElapsed;
         if(doLogging)
@@ -170,11 +175,11 @@ int main()
         /*
         // Insertion Sort Testing
         dataCopy = createArrCopy(testArr, dataSize);
-        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
         printf("\n===== INSERTION SORT START =====\n");
+        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
         //counter = bubbleSort(dataCopy, dataSize);         CALL INSERTION SORT HERE
-        printf("\n===== INSERTION SORT END =====\n");
         clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
+        printf("\n===== INSERTION SORT END =====\n");
         if(!isAFK)
         {
             printf("Print sorted array? [y/N]: ");
@@ -188,7 +193,12 @@ int main()
         printf("\nCounter: %d\n", counter);
         seconds = end.tv_sec - begin.tv_sec;
         nanoseconds = end.tv_nsec - begin.tv_nsec;
-        timeElapsed = seconds + nanoseconds*1e-9;
+        if(begin.tv_nsec > end.tv_nsec) // Clock underflow
+        {
+            seconds--;
+            nanoseconds += 1000000000;
+        }
+        timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
         counterSums[1] += counter;
         metSums[1] += timeElapsed;
@@ -204,11 +214,11 @@ int main()
 
         // Selection Sort Testing
         dataCopy = createArrCopy(testArr, dataSize);
-        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
         printf("\n===== SELECTION SORT START =====\n");
+        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
         //counter = bubbleSort(dataCopy, dataSize);         CALL SELECTION SORT HERE
-        printf("\n===== SELECTION SORT END =====\n");
         clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
+        printf("\n===== SELECTION SORT END =====\n");
         if(!isAFK)
         {
             printf("Print sorted array? [y/N]: ");
@@ -222,7 +232,12 @@ int main()
         printf("\nCounter: %d\n", counter);
         seconds = end.tv_sec - begin.tv_sec;
         nanoseconds = end.tv_nsec - begin.tv_nsec;
-        timeElapsed = seconds + nanoseconds*1e-9;
+        if(begin.tv_nsec > end.tv_nsec) // Clock underflow
+        {
+            seconds--;
+            nanoseconds += 1000000000;
+        }
+        timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
         counterSums[2] += counter;
         metSums[2] += timeElapsed;
@@ -238,11 +253,11 @@ int main()
 
         // Merge Sort Testing
         dataCopy = createArrCopy(testArr, dataSize);
-        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
         printf("\n===== MERGE SORT START =====\n");
+        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
         //counter = bubbleSort(dataCopy, dataSize);         CALL MERGE SORT HERE
-        printf("\n===== MERGE SORT END =====\n");
         clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
+        printf("\n===== MERGE SORT END =====\n");
         if(!isAFK)
         {
             printf("Print sorted array? [y/N]: ");
@@ -256,7 +271,12 @@ int main()
         printf("\nCounter: %d\n", counter);
         seconds = end.tv_sec - begin.tv_sec;
         nanoseconds = end.tv_nsec - begin.tv_nsec;
-        timeElapsed = seconds + nanoseconds*1e-9;
+        if(begin.tv_nsec > end.tv_nsec) // Clock underflow
+        {
+            seconds--;
+            nanoseconds += 1000000000;
+        }
+        timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
         counterSums[3] += counter;
         metSums[3] += timeElapsed;
@@ -272,11 +292,11 @@ int main()
 
         // Algo #5 Testing
         dataCopy = createArrCopy(testArr, dataSize);
-        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
         printf("\n===== ALGO5 SORT START =====\n");
+        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
         //counter = bubbleSort(dataCopy, dataSize);         CALL ALGO #5 HERE
-        printf("\n===== ALGO5 SORT END =====\n");
         clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
+        printf("\n===== ALGO5 SORT END =====\n");
         if(!isAFK)
         {
             printf("Print sorted array? [y/N]: ");
@@ -290,7 +310,12 @@ int main()
         printf("\nCounter: %d\n", counter);
         seconds = end.tv_sec - begin.tv_sec;
         nanoseconds = end.tv_nsec - begin.tv_nsec;
-        timeElapsed = seconds + nanoseconds*1e-9;
+        if(begin.tv_nsec > end.tv_nsec) // Clock underflow
+        {
+            seconds--;
+            nanoseconds += 1000000000;
+        }
+        timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
         counterSums[4] += counter;
         metSums[4] += timeElapsed;
@@ -306,11 +331,11 @@ int main()
 
         // Algo #6 Testing
         dataCopy = createArrCopy(testArr, dataSize);
-        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
         printf("\n===== ALGO6 SORT START =====\n");
+        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
         //counter = bubbleSort(dataCopy, dataSize);         CALL ALGO #6 HERE
-        printf("\n===== ALGO6 SORT END =====\n");
         clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
+        printf("\n===== ALGO6 SORT END =====\n");
         if(!isAFK)
         {
             printf("Print sorted array? [y/N]: ");
@@ -324,7 +349,12 @@ int main()
         printf("\nCounter: %d\n", counter);
         seconds = end.tv_sec - begin.tv_sec;
         nanoseconds = end.tv_nsec - begin.tv_nsec;
-        timeElapsed = seconds + nanoseconds*1e-9;
+        if(begin.tv_nsec > end.tv_nsec) // Clock underflow
+        {
+            seconds--;
+            nanoseconds += 1000000000;
+        }
+        timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
         printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);.
         counterSums[5] += counter;
         metSums[5] += timeElapsed;
@@ -356,55 +386,56 @@ int main()
 
     FILE *fp = fopen("testLog.txt", "a");
     printf("\nTest Summary:\n\n");
-    fprintf(fp, "\n\nTest Summary:\n");
+    time_t currTime; time(&currTime);
+    fprintf(fp, "\n\nTest Summary:\n", ctime(&currTime));
 
     // Bubble Sort
     timeAve = metSums[0] / nRuns;
     countAve = counterSums[0] / nRuns;
     printf("Bubble Sort Average MET = %lf\n", timeAve);
-    printf("Bubble Sort Average TFC = %ld\n\n", countAve);
+    printf("Bubble Sort Average TFC = %llu\n\n", countAve);
     fprintf(fp, "Bubble Sort Average MET = %lf\n", timeAve);
-    fprintf(fp, "Bubble Sort Average TFC = %ld\n\n", countAve);
+    fprintf(fp, "Bubble Sort Average TFC = %llu\n\n", countAve);
 
     // Insertion Sort
     timeAve = metSums[1] / nRuns;
     countAve = counterSums[1] / nRuns;
     printf("Insertion Sort Average MET = %lf\n", timeAve);
-    printf("Insertion Sort Average TFC = %ld\n\n", countAve);
+    printf("Insertion Sort Average TFC = %llu\n\n", countAve);
     fprintf(fp, "Insertion Sort Average MET = %lf\n", timeAve);
-    fprintf(fp, "Insertion Sort Average TFC = %ld\n\n", countAve);
+    fprintf(fp, "Insertion Sort Average TFC = %llu\n\n", countAve);
 
     // Selection Sort
     timeAve = metSums[2] / nRuns;
     countAve = counterSums[2] / nRuns;
     printf("Selection Sort Average MET = %lf\n", timeAve);
-    printf("Selection Sort Average TFC = %ld\n\n", countAve);
+    printf("Selection Sort Average TFC = %llu\n\n", countAve);
     fprintf(fp, "Selection Sort Average MET = %lf\n", timeAve);
-    fprintf(fp, "Selection Sort Average TFC = %ld\n\n", countAve);
+    fprintf(fp, "Selection Sort Average TFC = %llu\n\n", countAve);
 
     // Merge Sort
     timeAve = metSums[3] / nRuns;
     countAve = counterSums[3] / nRuns;
     printf("Merge Sort Average MET = %lf\n", timeAve);
-    printf("Merge Sort Average TFC = %ld\n\n", countAve);
+    printf("Merge Sort Average TFC = %llu\n\n", countAve);
     fprintf(fp, "Merge Sort Average MET = %lf\n", timeAve);
-    fprintf(fp, "Merge Sort Average TFC = %ld\n\n", countAve);
+    fprintf(fp, "Merge Sort Average TFC = %llu\n\n", countAve);
 
     // Algo5
     timeAve = metSums[4] / nRuns;
     countAve = counterSums[4] / nRuns;
     printf("Algo5 Sort Average MET = %lf\n", timeAve);
-    printf("Algo5 Sort Average TFC = %ld\n\n", countAve);
+    printf("Algo5 Sort Average TFC = %llu\n\n", countAve);
     fprintf(fp, "Algo5 Sort Average MET = %lf\n", timeAve);
-    fprintf(fp, "Algo5 Sort Average TFC = %ld\n\n", countAve);
+    fprintf(fp, "Algo5 Sort Average TFC = %llu\n\n", countAve);
 
     // Algo6
     timeAve = metSums[5] / nRuns;
     countAve = counterSums[5] / nRuns;
     printf("Algo6 Sort Average MET = %lf\n", timeAve);
-    printf("Algo6 Sort Average TFC = %ld\n\n", countAve);
+    printf("Algo6 Sort Average TFC = %llu\n\n", countAve);
     fprintf(fp, "Algo6 Sort Average MET = %lf\n", timeAve);
-    fprintf(fp, "Algo6 Sort Average TFC = %ld\n\n", countAve);
+    fprintf(fp, "Algo6 Sort Average TFC = %llu\n\n", countAve);
 
     fclose(fp);
 

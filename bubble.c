@@ -13,7 +13,7 @@ void swap(int *xp, int *yp)
 unsigned long long bubbleSort(int arr[], int n) 
 { 
    int i, j;
-   long unsigned int counter = 0;
+   unsigned long long counter = 0;
    bool swapped; 
    for (i = 0; i < n-1; i++) 
    { 
