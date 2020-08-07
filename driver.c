@@ -12,6 +12,7 @@
 // Standard Library Imports
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include <stdbool.h>
 
@@ -325,7 +326,7 @@ int main()
                     printArrayData(dataCopy, dataSize);
                 }
             }
-            printf("\nCounter: %d\n", counter);
+            printf("\nCounter: %llu\n", counter);
             seconds = end.tv_sec - begin.tv_sec;
             nanoseconds = end.tv_nsec - begin.tv_nsec;
             if(begin.tv_nsec > end.tv_nsec) // Clock underflow
@@ -407,7 +408,7 @@ int main()
         FILE *fp = fopen(LOGNAME, "a");
         printf("\nTest Summary:\n\n");
         time_t currTime; time(&currTime);
-        fprintf(fp, "\n\nTest Summary:\n", ctime(&currTime));
+        fprintf(fp, "\n\nTest Summary:\n%s\n", ctime(&currTime));
 
         // Bubble Sort
         timeAve = metSums[0] / nRuns;
