@@ -2,8 +2,6 @@
     Retrieved from: https://www.geeksforgeeks.org/quick-sort/
 */
 
-#include <stdio.h>
-
 unsigned long long quickCount = 0;
 
 // A utility function to swap two elements 
