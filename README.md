@@ -30,9 +30,9 @@
 - [INCOMPLETE] Documentation
 
 ### Merge Sort (Adi)
-- [INCOMPLETE] Assign Algorithm to Group Member
-- [INCOMPLETE] Research Code Snippets & Study Their Implementation
-- [INCOMPLETE] Modify Source Codes As Specified
+- [COMPLETE] Assign Algorithm to Group Member
+- [FOR REVIEW] Research Code Snippets & Study Their Implementation
+- [FOR REVIEW] Modify Source Codes As Specified
 - [INCOMPLETE] Testing Phase
 - [INCOMPLETE] Documentation
 
