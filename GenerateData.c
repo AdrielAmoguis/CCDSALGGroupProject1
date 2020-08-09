@@ -1,7 +1,8 @@
 #include <stdint.h>
+#include <limits.h>
 
 // Maximum Data Value
-#define MAXVAL 1000000
+#define MAXVAL INT_MAX
 
 /*	This function is an imported function: https://www.pcg-random.org/download.html
 	This is a way better RNG than C's stock RNG which just sucks.
