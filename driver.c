@@ -30,7 +30,7 @@
 //#include "selection.c"
 #include "merge.c"
 #include "quick.c"
-//#include "algo6.c"
+#include "radix.c"
 
 // Macros
 #define INTERVAL 2
@@ -314,7 +314,7 @@ int main()
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
             counter = quickSort(dataCopy, 0, dataSize-1);    
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
-            printf("nQuicksort end ...\n");
+            printf("Quicksort end ...\n");
             if(!isAFK)
             {
                 printf("Print sorted array? [y/N]: ");
@@ -347,15 +347,14 @@ int main()
             counter = 0;
             quickCount = 0;
             free(dataCopy);
-
-            /*
-            // Algo #6 Testing
+            
+            // Radix Sort Testing
             dataCopy = createArrCopy(testArr, dataSize);
-            printf("\nAlgo6 start ...\n");
+            printf("\nRadix Sort start ...\n");
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
-            //counter = bubbleSort(dataCopy, dataSize);         CALL ALGO #6 HERE
+            counter = radixSort(dataCopy, dataSize);
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
-            printf("Algo6 end ...\n");
+            printf("Radix Sort end ...\n");
             if(!isAFK)
             {
                 printf("Print sorted array? [y/N]: ");
@@ -375,7 +374,7 @@ int main()
                 nanoseconds += 1000000000;
             }
             timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
-            printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);.
+            printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
             counterSums[5] += counter;
             metSums[5] += timeElapsed;
             if(doLogging)
@@ -387,7 +386,7 @@ int main()
             }
             counter = 0;
             free(dataCopy);
-            */
+            
             if(!isAFK)
                 system("PAUSE");
 
@@ -449,11 +448,11 @@ int main()
         fprintf(fp, "QuickSort Average MET,%lf\n", timeAve);
         fprintf(fp, "QuickSort Average TFC,%lf\n\n", countAve);
 
-        // Algo6
+        // Radix Sort
         timeAve = metSums[5] / nRuns;
         countAve = (double) counterSums[5] / (double) nRuns;
-        printf("Algo6 Sort Average MET = %lf\n", timeAve);
-        printf("Algo6 Sort Average TFC = %lf\n\n", countAve);
+        printf("Radix Sort Average MET = %lf\n", timeAve);
+        printf("Radix Sort Average TFC = %lf\n\n", countAve);
         fprintf(fp, "Algo6 Sort Average MET,%lf\n", timeAve);
         fprintf(fp, "Algo6 Sort Average TFC,%lf\n\n", countAve);
 
