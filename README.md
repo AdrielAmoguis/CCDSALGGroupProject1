@@ -44,10 +44,10 @@
 - [INCOMPLETE] Testing Phase
 - [INCOMPLETE] Documentation
 
-### Algorithm 6 (Adi)
-- [INCOMPLETE] Search for an Algorithm
-- [INCOMPLETE] Assign Algorithm to Group Member
-- [INCOMPLETE] Research Code Snippets & Study Their Implementation
-- [INCOMPLETE] Modify Source Codes As Specified
+### Radix Sort 6 (Adi)
+- [COMPLETE] Search for an Algorithm
+- [COMPLETE] Assign Algorithm to Group Member
+- [FOR REVIEW] Research Code Snippets & Study Their Implementation
+- [COMPLETE] Modify Source Codes As Specified
 - [INCOMPLETE] Testing Phase
 - [INCOMPLETE] Documentation
