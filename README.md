@@ -1,8 +1,8 @@
 # CCDSALG Project 1
 
 ### OVERALL
-- [INCOMPLETE] Identify 2 more sorting algorithms
-- [INCOMPLETE] Assign Algorithms to Group Members
+- [COMPLETE] Identify 2 more sorting algorithms
+- [COMPLETE] Assign Algorithms to Group Members
 - [INCOMPLETE] Research Code Snippets & Study Their Implementation
 - [INCOMPLETE] Modify Source Codes As Specified
 - [INCOMPLETE] Testing Phase
