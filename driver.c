@@ -403,7 +403,7 @@ int main()
         
         // Compute for the MET and TFC averages per algorithm
         double timeAve;
-        unsigned long long countAve;
+        long double countAve;
 
         FILE *fp = fopen(LOGNAME, "a");
         printf("\nTest Summary:\n\n");
