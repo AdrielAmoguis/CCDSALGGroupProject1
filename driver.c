@@ -28,7 +28,7 @@
 #include "bubble.c"
 //#include "insertion.c"
 //#include "selection.c"
-//#include "merge.c"
+#include "merge.c"
 #include "quick.c"
 //#include "algo6.c"
 
@@ -132,10 +132,9 @@ int main()
                 doLogging = true;
         }
         
-        printf("=============================\n");
-
         for(programRun = 0; programRun < nRuns; programRun++)
         {
+            printf("=============================\n");
             printf("\nProgram Iteration M = %d of %d\n\n", programRun+1, nRuns);
             
             GenerateData(testArr, dataSize);
@@ -153,11 +152,11 @@ int main()
 
             // Bubble Sort Testing
             dataCopy = createArrCopy(testArr, dataSize);
-            printf("\n===== BUBBLE SORT START =====\n");
+            printf("\nBubble Sort start ...\n");
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
             counter = bubbleSort(dataCopy, dataSize);
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
-            printf("\n===== BUBBLE SORT END =====\n");
+            printf("Bubble Sort end ...\n");
             if(!isAFK)
             {
                 printf("Print sorted array? [y/N]: ");
@@ -168,7 +167,7 @@ int main()
                     printArrayData(dataCopy, dataSize);
                 }
             }
-            printf("\nCounter: %llu\n", counter);
+            printf("Counter: %llu\n", counter);
             seconds = end.tv_sec - begin.tv_sec;
             nanoseconds = end.tv_nsec - begin.tv_nsec;
             if(begin.tv_nsec > end.tv_nsec) // Clock underflow
@@ -193,11 +192,11 @@ int main()
             /*
             // Insertion Sort Testing
             dataCopy = createArrCopy(testArr, dataSize);
-            printf("\n===== INSERTION SORT START =====\n");
+            printf("\nInsertion sort start ...\n");
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
             //counter = bubbleSort(dataCopy, dataSize);         CALL INSERTION SORT HERE
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
-            printf("\n===== INSERTION SORT END =====\n");
+            printf("Insertion sort end ...\n");
             if(!isAFK)
             {
                 printf("Print sorted array? [y/N]: ");
@@ -208,7 +207,7 @@ int main()
                     printArrayData(dataCopy, dataSize);
                 }
             }
-            printf("\nCounter: %d\n", counter);
+            printf("Counter: %d\n", counter);
             seconds = end.tv_sec - begin.tv_sec;
             nanoseconds = end.tv_nsec - begin.tv_nsec;
             if(begin.tv_nsec > end.tv_nsec) // Clock underflow
@@ -232,11 +231,11 @@ int main()
 
             // Selection Sort Testing
             dataCopy = createArrCopy(testArr, dataSize);
-            printf("\n===== SELECTION SORT START =====\n");
+            printf("\nSelection sort start ...\n");
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
             //counter = bubbleSort(dataCopy, dataSize);         CALL SELECTION SORT HERE
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
-            printf("\n===== SELECTION SORT END =====\n");
+            printf("Selection sort end ...\n");
             if(!isAFK)
             {
                 printf("Print sorted array? [y/N]: ");
@@ -247,7 +246,7 @@ int main()
                     printArrayData(dataCopy, dataSize);
                 }
             }
-            printf("\nCounter: %d\n", counter);
+            printf("Counter: %d\n", counter);
             seconds = end.tv_sec - begin.tv_sec;
             nanoseconds = end.tv_nsec - begin.tv_nsec;
             if(begin.tv_nsec > end.tv_nsec) // Clock underflow
@@ -268,14 +267,15 @@ int main()
             }
             counter = 0;
             free(dataCopy);
+            */
 
             // Merge Sort Testing
             dataCopy = createArrCopy(testArr, dataSize);
-            printf("\n===== MERGE SORT START =====\n");
+            printf("\nMerge sort start ...\n");
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
-            //counter = bubbleSort(dataCopy, dataSize);         CALL MERGE SORT HERE
+            counter = mergeSort(dataCopy, 0, dataSize-1);
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
-            printf("\n===== MERGE SORT END =====\n");
+            printf("Merge sort end ...\n");
             if(!isAFK)
             {
                 printf("Print sorted array? [y/N]: ");
@@ -286,7 +286,7 @@ int main()
                     printArrayData(dataCopy, dataSize);
                 }
             }
-            printf("\nCounter: %d\n", counter);
+            printf("Counter: %d\n", counter);
             seconds = end.tv_sec - begin.tv_sec;
             nanoseconds = end.tv_nsec - begin.tv_nsec;
             if(begin.tv_nsec > end.tv_nsec) // Clock underflow
@@ -307,15 +307,14 @@ int main()
             }
             counter = 0;
             free(dataCopy);
-            */
 
             // Quick Sort Testing
             dataCopy = createArrCopy(testArr, dataSize);
-            printf("\n===== QUICKSORT START =====\n");
+            printf("\nQuicksort start ...\n");
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
             counter = quickSort(dataCopy, 0, dataSize-1);    
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
-            printf("\n===== QUICKSORT END =====\n");
+            printf("nQuicksort end ...\n");
             if(!isAFK)
             {
                 printf("Print sorted array? [y/N]: ");
@@ -326,7 +325,7 @@ int main()
                     printArrayData(dataCopy, dataSize);
                 }
             }
-            printf("\nCounter: %llu\n", counter);
+            printf("Counter: %llu\n", counter);
             seconds = end.tv_sec - begin.tv_sec;
             nanoseconds = end.tv_nsec - begin.tv_nsec;
             if(begin.tv_nsec > end.tv_nsec) // Clock underflow
@@ -352,11 +351,11 @@ int main()
             /*
             // Algo #6 Testing
             dataCopy = createArrCopy(testArr, dataSize);
-            printf("\n===== ALGO6 SORT START =====\n");
+            printf("\nAlgo6 start ...\n");
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
             //counter = bubbleSort(dataCopy, dataSize);         CALL ALGO #6 HERE
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
-            printf("\n===== ALGO6 SORT END =====\n");
+            printf("Algo6 end ...\n");
             if(!isAFK)
             {
                 printf("Print sorted array? [y/N]: ");
@@ -367,7 +366,7 @@ int main()
                     printArrayData(dataCopy, dataSize);
                 }
             }
-            printf("\nCounter: %d\n", counter);
+            printf("Counter: %d\n", counter);
             seconds = end.tv_sec - begin.tv_sec;
             nanoseconds = end.tv_nsec - begin.tv_nsec;
             if(begin.tv_nsec > end.tv_nsec) // Clock underflow
@@ -465,8 +464,12 @@ int main()
         currN++;
     } while(useScript && currN < 12);
     
-
+#if _WIN32 || _WIN64
     system("PAUSE");
+#else
+    printf("Press any key to continue.\n");
+    char dump = getch();
+#endif
 
     return 0;
 }
