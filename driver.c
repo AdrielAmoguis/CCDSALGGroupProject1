@@ -412,7 +412,7 @@ int main()
 
         // Bubble Sort
         timeAve = metSums[0] / nRuns;
-        countAve = counterSums[0] / nRuns;
+        countAve = (double) counterSums[0] / (double) nRuns;
         printf("Bubble Sort Average MET = %lf\n", timeAve);
         printf("Bubble Sort Average TFC = %llu\n\n", countAve);
         fprintf(fp, "Bubble Sort Average MET,%lf\n", timeAve);
@@ -420,7 +420,7 @@ int main()
 
         // Insertion Sort
         timeAve = metSums[1] / nRuns;
-        countAve = counterSums[1] / nRuns;
+        countAve = (double) counterSums[1] / (double) nRuns;
         printf("Insertion Sort Average MET = %lf\n", timeAve);
         printf("Insertion Sort Average TFC = %llu\n\n", countAve);
         fprintf(fp, "Insertion Sort Average MET,%lf\n", timeAve);
@@ -428,7 +428,7 @@ int main()
 
         // Selection Sort
         timeAve = metSums[2] / nRuns;
-        countAve = counterSums[2] / nRuns;
+        countAve = (double) counterSums[2] / (double) nRuns;
         printf("Selection Sort Average MET = %lf\n", timeAve);
         printf("Selection Sort Average TFC = %llu\n\n", countAve);
         fprintf(fp, "Selection Sort Average MET,%lf\n", timeAve);
@@ -436,7 +436,7 @@ int main()
 
         // Merge Sort
         timeAve = metSums[3] / nRuns;
-        countAve = counterSums[3] / nRuns;
+        countAve = (double) counterSums[3] / (double) nRuns;
         printf("Merge Sort Average MET = %lf\n", timeAve);
         printf("Merge Sort Average TFC = %llu\n\n", countAve);
         fprintf(fp, "Merge Sort Average MET,%lf\n", timeAve);
@@ -444,7 +444,7 @@ int main()
 
         // Algo5
         timeAve = metSums[4] / nRuns;
-        countAve = counterSums[4] / nRuns;
+        countAve = (double) counterSums[4] / (double) nRuns;
         printf("Algo5 Sort Average MET = %lf\n", timeAve);
         printf("Algo5 Sort Average TFC = %llu\n\n", countAve);
         fprintf(fp, "QuickSort Average MET,%lf\n", timeAve);
@@ -452,7 +452,7 @@ int main()
 
         // Algo6
         timeAve = metSums[5] / nRuns;
-        countAve = counterSums[5] / nRuns;
+        countAve = (double) counterSums[5] / (double) nRuns;
         printf("Algo6 Sort Average MET = %lf\n", timeAve);
         printf("Algo6 Sort Average TFC = %llu\n\n", countAve);
         fprintf(fp, "Algo6 Sort Average MET,%lf\n", timeAve);
