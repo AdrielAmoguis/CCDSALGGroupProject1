@@ -15,14 +15,14 @@
 - [INCOMPLETE] Testing Phase
 - [INCOMPLETE] Documentation
 
-### Insertion Sort
+### Insertion Sort (Alyssa)
 - [INCOMPLETE] Assign Algorithm to Group Member
 - [INCOMPLETE] Research Code Snippets & Study Their Implementation
 - [INCOMPLETE] Modify Source Codes As Specified
 - [INCOMPLETE] Testing Phase
 - [INCOMPLETE] Documentation
 
-### Selection Sort
+### Selection Sort (Alyssa)
 - [INCOMPLETE] Assign Algorithm to Group Member
 - [INCOMPLETE] Research Code Snippets & Study Their Implementation
 - [INCOMPLETE] Modify Source Codes As Specified
@@ -44,7 +44,7 @@
 - [INCOMPLETE] Testing Phase
 - [INCOMPLETE] Documentation
 
-### Algorithm 6
+### Algorithm 6 (Adi)
 - [INCOMPLETE] Search for an Algorithm
 - [INCOMPLETE] Assign Algorithm to Group Member
 - [INCOMPLETE] Research Code Snippets & Study Their Implementation
