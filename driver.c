@@ -403,7 +403,7 @@ int main()
         
         // Compute for the MET and TFC averages per algorithm
         double timeAve;
-        long double countAve;
+        double countAve;
 
         FILE *fp = fopen(LOGNAME, "a");
         printf("\nTest Summary:\n\n");
@@ -414,49 +414,49 @@ int main()
         timeAve = metSums[0] / nRuns;
         countAve = (double) counterSums[0] / (double) nRuns;
         printf("Bubble Sort Average MET = %lf\n", timeAve);
-        printf("Bubble Sort Average TFC = %llu\n\n", countAve);
+        printf("Bubble Sort Average TFC = %lf\n\n", countAve);
         fprintf(fp, "Bubble Sort Average MET,%lf\n", timeAve);
-        fprintf(fp, "Bubble Sort Average TFC,%llu\n\n", countAve);
+        fprintf(fp, "Bubble Sort Average TFC,%lf\n\n", countAve);
 
         // Insertion Sort
         timeAve = metSums[1] / nRuns;
         countAve = (double) counterSums[1] / (double) nRuns;
         printf("Insertion Sort Average MET = %lf\n", timeAve);
-        printf("Insertion Sort Average TFC = %llu\n\n", countAve);
+        printf("Insertion Sort Average TFC = %lf\n\n", countAve);
         fprintf(fp, "Insertion Sort Average MET,%lf\n", timeAve);
-        fprintf(fp, "Insertion Sort Average TFC,%llu\n\n", countAve);
+        fprintf(fp, "Insertion Sort Average TFC,%lf\n\n", countAve);
 
         // Selection Sort
         timeAve = metSums[2] / nRuns;
         countAve = (double) counterSums[2] / (double) nRuns;
         printf("Selection Sort Average MET = %lf\n", timeAve);
-        printf("Selection Sort Average TFC = %llu\n\n", countAve);
+        printf("Selection Sort Average TFC = %lf\n\n", countAve);
         fprintf(fp, "Selection Sort Average MET,%lf\n", timeAve);
-        fprintf(fp, "Selection Sort Average TFC,%llu\n\n", countAve);
+        fprintf(fp, "Selection Sort Average TFC,%lf\n\n", countAve);
 
         // Merge Sort
         timeAve = metSums[3] / nRuns;
         countAve = (double) counterSums[3] / (double) nRuns;
         printf("Merge Sort Average MET = %lf\n", timeAve);
-        printf("Merge Sort Average TFC = %llu\n\n", countAve);
+        printf("Merge Sort Average TFC = %lf\n\n", countAve);
         fprintf(fp, "Merge Sort Average MET,%lf\n", timeAve);
-        fprintf(fp, "Merge Sort Average TFC,%llu\n\n", countAve);
+        fprintf(fp, "Merge Sort Average TFC,%lf\n\n", countAve);
 
-        // Algo5
+        // Quick Sort
         timeAve = metSums[4] / nRuns;
         countAve = (double) counterSums[4] / (double) nRuns;
-        printf("Algo5 Sort Average MET = %lf\n", timeAve);
-        printf("Algo5 Sort Average TFC = %llu\n\n", countAve);
+        printf("Quicksort Average MET = %lf\n", timeAve);
+        printf("Quicksort Average TFC = %lf\n\n", countAve);
         fprintf(fp, "QuickSort Average MET,%lf\n", timeAve);
-        fprintf(fp, "QuickSort Average TFC,%llu\n\n", countAve);
+        fprintf(fp, "QuickSort Average TFC,%lf\n\n", countAve);
 
         // Algo6
         timeAve = metSums[5] / nRuns;
         countAve = (double) counterSums[5] / (double) nRuns;
         printf("Algo6 Sort Average MET = %lf\n", timeAve);
-        printf("Algo6 Sort Average TFC = %llu\n\n", countAve);
+        printf("Algo6 Sort Average TFC = %lf\n\n", countAve);
         fprintf(fp, "Algo6 Sort Average MET,%lf\n", timeAve);
-        fprintf(fp, "Algo6 Sort Average TFC,%llu\n\n", countAve);
+        fprintf(fp, "Algo6 Sort Average TFC,%lf\n\n", countAve);
 
         fprintf(fp, "\nITERATION END\n\n\n");
 
