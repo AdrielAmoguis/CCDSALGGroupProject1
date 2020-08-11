@@ -180,7 +180,7 @@ int main()
                 nanoseconds += 1000000000;
             }
             timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
-            printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * (double)1000);
+            printf("Machine Execution Time: %.20lf seconds (%.20lf miliseconds)\n", timeElapsed, timeElapsed * (double)1000);
             counterSums[0] += counter;
             metSums[0] += timeElapsed;
             if(doLogging)
@@ -220,7 +220,7 @@ int main()
                 nanoseconds += 1000000000;
             }
             timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
-            printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+            printf("Machine Execution Time: %.20lf seconds (%.20lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
             counterSums[1] += counter;
             metSums[1] += timeElapsed;
             if(doLogging)
@@ -259,7 +259,7 @@ int main()
                 nanoseconds += 1000000000;
             }
             timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
-            printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+            printf("Machine Execution Time: %.20lf seconds (%.20lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
             counterSums[2] += counter;
             metSums[2] += timeElapsed;
             if(doLogging)
@@ -299,7 +299,7 @@ int main()
                 nanoseconds += 1000000000;
             }
             timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
-            printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+            printf("Machine Execution Time: %.20lf seconds (%.20lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
             counterSums[3] += counter;
             metSums[3] += timeElapsed;
             if(doLogging)
@@ -338,7 +338,7 @@ int main()
                 nanoseconds += 1000000000;
             }
             timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
-            printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+            printf("Machine Execution Time: %.20lf seconds (%.20lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
             counterSums[4] += counter;
             metSums[4] += timeElapsed;
             if(doLogging)
@@ -378,7 +378,7 @@ int main()
                 nanoseconds += 1000000000;
             }
             timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
-            printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+            printf("Machine Execution Time: %.20lf seconds (%.20lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
             counterSums[5] += counter;
             metSums[5] += timeElapsed;
             if(doLogging)
@@ -415,49 +415,49 @@ int main()
         // Bubble Sort
         timeAve = metSums[0] / nRuns;
         countAve = (double) counterSums[0] / (double) nRuns;
-        printf("Bubble Sort Average MET = %lf\n", timeAve);
+        printf("Bubble Sort Average MET = %.20lf\n", timeAve);
         printf("Bubble Sort Average TFC = %lf\n\n", countAve);
-        fprintf(fp, "Bubble Sort Average MET,%lf\n", timeAve);
+        fprintf(fp, "Bubble Sort Average MET,%.20lf\n", timeAve);
         fprintf(fp, "Bubble Sort Average TFC,%lf\n\n", countAve);
 
         // Insertion Sort
         timeAve = metSums[1] / nRuns;
         countAve = (double) counterSums[1] / (double) nRuns;
-        printf("Insertion Sort Average MET = %lf\n", timeAve);
+        printf("Insertion Sort Average MET = %.20lf\n", timeAve);
         printf("Insertion Sort Average TFC = %lf\n\n", countAve);
-        fprintf(fp, "Insertion Sort Average MET,%lf\n", timeAve);
+        fprintf(fp, "Insertion Sort Average MET,%.20lf\n", timeAve);
         fprintf(fp, "Insertion Sort Average TFC,%lf\n\n", countAve);
 
         // Selection Sort
         timeAve = metSums[2] / nRuns;
         countAve = (double) counterSums[2] / (double) nRuns;
-        printf("Selection Sort Average MET = %lf\n", timeAve);
+        printf("Selection Sort Average MET = %.20lf\n", timeAve);
         printf("Selection Sort Average TFC = %lf\n\n", countAve);
-        fprintf(fp, "Selection Sort Average MET,%lf\n", timeAve);
+        fprintf(fp, "Selection Sort Average MET,%.20lf\n", timeAve);
         fprintf(fp, "Selection Sort Average TFC,%lf\n\n", countAve);
 
         // Merge Sort
         timeAve = metSums[3] / nRuns;
         countAve = (double) counterSums[3] / (double) nRuns;
-        printf("Merge Sort Average MET = %lf\n", timeAve);
+        printf("Merge Sort Average MET = %.20lf\n", timeAve);
         printf("Merge Sort Average TFC = %lf\n\n", countAve);
-        fprintf(fp, "Merge Sort Average MET,%lf\n", timeAve);
+        fprintf(fp, "Merge Sort Average MET,%.20lf\n", timeAve);
         fprintf(fp, "Merge Sort Average TFC,%lf\n\n", countAve);
 
         // Quick Sort
         timeAve = metSums[4] / nRuns;
         countAve = (double) counterSums[4] / (double) nRuns;
-        printf("Quicksort Average MET = %lf\n", timeAve);
+        printf("Quicksort Average MET = %.20lf\n", timeAve);
         printf("Quicksort Average TFC = %lf\n\n", countAve);
-        fprintf(fp, "QuickSort Average MET,%lf\n", timeAve);
+        fprintf(fp, "QuickSort Average MET,%.20lf\n", timeAve);
         fprintf(fp, "QuickSort Average TFC,%lf\n\n", countAve);
 
         // Radix Sort
         timeAve = metSums[5] / nRuns;
         countAve = (double) counterSums[5] / (double) nRuns;
-        printf("Radix Sort Average MET = %lf\n", timeAve);
+        printf("Radix Sort Average MET = %.20lf\n", timeAve);
         printf("Radix Sort Average TFC = %lf\n\n", countAve);
-        fprintf(fp, "Algo6 Sort Average MET,%lf\n", timeAve);
+        fprintf(fp, "Algo6 Sort Average MET,%.20lf\n", timeAve);
         fprintf(fp, "Algo6 Sort Average TFC,%lf\n\n", countAve);
 
         fprintf(fp, "\nITERATION END\n\n\n");
