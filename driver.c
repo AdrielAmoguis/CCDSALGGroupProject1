@@ -36,6 +36,10 @@
 #define INTERVAL 2
 #define LOGNAME "OutputData.csv"
 
+// CCDSALG Script Settings
+#define M_ITERATIONS 12
+#define N_LIMIT 9
+
 // Struct
 typedef struct
 {
@@ -104,7 +108,7 @@ int main()
         if(cChoice == 'y' || cChoice == 'Y')
         {
             useScript = true;
-            nRuns = 20;
+            nRuns = M_ITERATIONS;
             testArr = malloc(testN[currN] * sizeof(int));
             log.sampleSize = testN[currN];
             dataSize = testN[currN];
@@ -461,7 +465,7 @@ int main()
         fclose(fp);
         free(testArr);
         currN++;
-    } while(useScript && currN < 12);
+    } while(useScript && currN < N_LIMIT);
     
 #if _WIN32 || _WIN64
     system("PAUSE");
