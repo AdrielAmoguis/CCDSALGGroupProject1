@@ -36,9 +36,9 @@
 #define INTERVAL 2
 #define LOGNAME "OutputData.csv"
 
-// CCDSALG Script Settings
-#define M_ITERATIONS 12
+// Testing Settings
 #define N_LIMIT 9
+#define M_ITERATIONS 12
 
 // Struct
 typedef struct
@@ -100,7 +100,7 @@ int main()
     unsigned long long counterSums[6] = {0,0,0,0,0,0};
     double metSums[6] = {0,0,0,0,0,0};
 
-    printf("Run CCDSALG specs-based test script? [y/N]: ");
+    printf("Run CCDSALG specs-based test script? (N = 1024 -> 524288), M = 12 [y/N]: ");
     scanf(" %c", &cChoice);
 
     do
@@ -135,24 +135,26 @@ int main()
             if(cChoice == 'y' || cChoice == 'Y')
                 doLogging = true;
         }
+
+        GenerateData(testArr, dataSize);
+
+        if(!isAFK)
+        {
+            printf("Data Generated. Print sample data? [y/N]: ");
+            scanf(" %c", &cChoice);
+            if(cChoice == 'y' || cChoice == 'Y')
+            {
+                printf("Sample Data:\n");
+                printArrayData(testArr, dataSize);
+            }
+        }
+        else
+            printf("New dataset generated.\n");
         
         for(programRun = 0; programRun < nRuns; programRun++)
         {
             printf("=============================\n");
             printf("\nProgram Iteration M = %d of %d\n\n", programRun+1, nRuns);
-            
-            GenerateData(testArr, dataSize);
-
-            if(!isAFK)
-            {
-                printf("Data Generated. Print sample data? [y/N]: ");
-                scanf(" %c", &cChoice);
-                if(cChoice == 'y' || cChoice == 'Y')
-                {
-                    printf("Sample Data:\n");
-                    printArrayData(testArr, dataSize);
-                }
-            }
 
             // Bubble Sort Testing
             dataCopy = createArrCopy(testArr, dataSize);
@@ -180,7 +182,7 @@ int main()
                 nanoseconds += 1000000000;
             }
             timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
-            printf("Machine Execution Time: %.20lf seconds (%.20lf miliseconds)\n", timeElapsed, timeElapsed * (double)1000);
+            printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * (double)1000);
             counterSums[0] += counter;
             metSums[0] += timeElapsed;
             if(doLogging)
@@ -220,7 +222,7 @@ int main()
                 nanoseconds += 1000000000;
             }
             timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
-            printf("Machine Execution Time: %.20lf seconds (%.20lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+            printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
             counterSums[1] += counter;
             metSums[1] += timeElapsed;
             if(doLogging)
@@ -259,7 +261,7 @@ int main()
                 nanoseconds += 1000000000;
             }
             timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
-            printf("Machine Execution Time: %.20lf seconds (%.20lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+            printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
             counterSums[2] += counter;
             metSums[2] += timeElapsed;
             if(doLogging)
@@ -299,7 +301,7 @@ int main()
                 nanoseconds += 1000000000;
             }
             timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
-            printf("Machine Execution Time: %.20lf seconds (%.20lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+            printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
             counterSums[3] += counter;
             metSums[3] += timeElapsed;
             if(doLogging)
@@ -338,7 +340,7 @@ int main()
                 nanoseconds += 1000000000;
             }
             timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
-            printf("Machine Execution Time: %.20lf seconds (%.20lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+            printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
             counterSums[4] += counter;
             metSums[4] += timeElapsed;
             if(doLogging)
@@ -378,12 +380,12 @@ int main()
                 nanoseconds += 1000000000;
             }
             timeElapsed = (double)seconds + (double)nanoseconds/1000000000.0;
-            printf("Machine Execution Time: %.20lf seconds (%.20lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
+            printf("Machine Execution Time: %lf seconds (%lf miliseconds)\n", timeElapsed, timeElapsed * 1000);
             counterSums[5] += counter;
             metSums[5] += timeElapsed;
             if(doLogging)
             {
-                strcpy(log.algoName, "ALGO6");
+                strcpy(log.algoName, "Radix Sort");
                 log.count = counter;
                 log.machineExecutionTime = timeElapsed;
                 generateLog(log);
