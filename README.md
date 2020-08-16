@@ -12,7 +12,7 @@
 Testing phase is currently ongoing. If you wish to also do some testing, you may download the executable binary file from Github's releases section. Great work!
 
 ## Test Status
-- [Main System] : Restarted (11:45 PM - August 16, 2020)
+- [Main System] : Restarted (2:12 AM - August 17, 2020)
 - [Backup 1] : Restarted (11:45 PM - August 16, 2020)
 - [Backup 2] : Standby
 
