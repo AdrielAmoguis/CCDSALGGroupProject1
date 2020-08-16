@@ -30,7 +30,7 @@
 #define LOGNAME "OutputData.csv"
 
 // Testing Settings
-#define N_LIMIT 9
+#define N_LIMIT 10
 #define M_ITERATIONS 12
 
 // Struct
@@ -459,7 +459,7 @@ int main()
         fclose(fp);
         free(testArr);
         currN++;
-    } while(useScript && currN < N_LIMIT);
+    } while(useScript && currN <= N_LIMIT);
     
 #if _WIN32 || _WIN64
     system("PAUSE");
