@@ -386,13 +386,15 @@ int main()
             free(dataCopy);
             
             if(!isAFK)
-            #if _WIN32 || _WIN64   
-                system("PAUSE");
-            #else 
-                printf("Press the enter key to continue.\n");
-                char dump;
-                scanf(" %c", &dump);
-            #endif
+            {
+                #if _WIN32 || _WIN64   
+                    system("PAUSE");
+                #else 
+                    printf("Press the enter key to continue.\n");
+                    char dump;
+                    scanf(" %c", &dump);
+                #endif
+            }
         }
         
         // Compute for the MET and TFC averages per algorithm
