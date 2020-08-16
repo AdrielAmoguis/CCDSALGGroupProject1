@@ -389,8 +389,9 @@ int main()
             #if _WIN32 || _WIN64   
                 system("PAUSE");
             #else 
-                printf("Press any key to continue.\n");
-                char dump = getc();
+                printf("Press the enter key to continue.\n");
+                char dump;
+                scanf(" %c", &dump);
             #endif
         }
         
@@ -461,8 +462,9 @@ int main()
 #if _WIN32 || _WIN64
     system("PAUSE");
 #else
-    printf("Press any key to continue.\n");
-    char dump2 = getc();
+    printf("Press the enter key to continue.\n");
+    char dump2;
+    scanf(" %c", &dump2);
 #endif
 
     return 0;
