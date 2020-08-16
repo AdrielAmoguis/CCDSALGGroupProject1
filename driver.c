@@ -206,7 +206,7 @@ int main()
                     printArrayData(dataCopy, dataSize);
                 }
             }
-            printf("Counter: %d\n", counter);
+            printf("Counter: %llu\n", counter);
             seconds = end.tv_sec - begin.tv_sec;
             nanoseconds = end.tv_nsec - begin.tv_nsec;
             if(begin.tv_nsec > end.tv_nsec) // Clock underflow
@@ -245,7 +245,7 @@ int main()
                     printArrayData(dataCopy, dataSize);
                 }
             }
-            printf("Counter: %d\n", counter);
+            printf("Counter: %llu\n", counter);
             seconds = end.tv_sec - begin.tv_sec;
             nanoseconds = end.tv_nsec - begin.tv_nsec;
             if(begin.tv_nsec > end.tv_nsec) // Clock underflow
@@ -284,7 +284,7 @@ int main()
                     printArrayData(dataCopy, dataSize);
                 }
             }
-            printf("Counter: %d\n", counter);
+            printf("Counter: %llu\n", counter);
             seconds = end.tv_sec - begin.tv_sec;
             nanoseconds = end.tv_nsec - begin.tv_nsec;
             if(begin.tv_nsec > end.tv_nsec) // Clock underflow
@@ -363,7 +363,7 @@ int main()
                     printArrayData(dataCopy, dataSize);
                 }
             }
-            printf("Counter: %d\n", counter);
+            printf("Counter: %llu\n", counter);
             seconds = end.tv_sec - begin.tv_sec;
             nanoseconds = end.tv_nsec - begin.tv_nsec;
             if(begin.tv_nsec > end.tv_nsec) // Clock underflow
@@ -390,7 +390,7 @@ int main()
                 system("PAUSE");
             #else 
                 printf("Press any key to continue.\n");
-                char dump = getch();
+                char dump = getc();
             #endif
         }
         
@@ -462,7 +462,7 @@ int main()
     system("PAUSE");
 #else
     printf("Press any key to continue.\n");
-    char dump2 = getch();
+    char dump2 = getc();
 #endif
 
     return 0;
