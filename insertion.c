@@ -25,12 +25,3 @@ unsigned long long insertionSort(int arr[], int n)
 	} 
 	return counter;
 } 
-
-// A utility function to print an array of size n 
-void printArray(int arr[], int n) 
-{ 
-	int i; 
-	for (i = 0; i < n; i++) 
-		printf("%d ", arr[i]); 
-	printf("\n"); 
-} 

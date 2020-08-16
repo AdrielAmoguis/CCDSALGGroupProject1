@@ -2,13 +2,6 @@
 Retrieved from: https://www.geeksforgeeks.org/selection-sort
 */
 
-void swap(int *xp, int *yp) 
-{ 
-	int temp = *xp; 
-	*xp = *yp; 
-	*yp = temp; 
-} 
-
 unsigned long long selectionSort(int arr[], int n) 
 { 
 	int i, j, min_idx; 
@@ -31,13 +24,4 @@ unsigned long long selectionSort(int arr[], int n)
 		swap(&arr[min_idx], &arr[i]); 
 	} 
 	return counter;
-} 
-
-/* Function to print an array */
-void printArray(int arr[], int size) 
-{ 
-	int i; 
-	for (i=0; i < size; i++) 
-		printf("%d ", arr[i]); 
-	printf("\n"); 
 } 

@@ -2,13 +2,6 @@
 	Bubble sort algorithm retrieved from: https://www.geeksforgeeks.org/bubble-sort/
 */
 
-void swap(int *xp, int *yp) 
-{ 
-    int temp = *xp; 
-    *xp = *yp; 
-    *yp = temp; 
-} 
-  
 // An optimized version of Bubble Sort 
 unsigned long long bubbleSort(int arr[], int n) 
 { 
@@ -34,13 +27,4 @@ unsigned long long bubbleSort(int arr[], int n)
         break; 
    } 
    return counter;
-} 
-  
-/* Function to print an array */
-void printArray(int arr[], int size) 
-{ 
-    int i; 
-    for (i=0; i < size; i++) 
-        printf("%d ", arr[i]); 
-    printf("n"); 
 } 

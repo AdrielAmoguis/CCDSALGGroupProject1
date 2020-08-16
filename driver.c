@@ -16,24 +16,17 @@
 #include <time.h>
 #include <stdbool.h>
 
-// This will be removed after all algos are implemented
-#if _WIN32 || _WIN64
-    #include <windows.h>
-#else
-    #include <unistd.h>
-#endif
-
 // Algorithms
+#include "utility.c"
 #include "GenerateData.c"
 #include "bubble.c"
-//#include "insertion.c"
-//#include "selection.c"
+#include "insertion.c"
+#include "selection.c"
 #include "merge.c"
 #include "quick.c"
 #include "radix.c"
 
 // Macros
-#define INTERVAL 2
 #define LOGNAME "OutputData.csv"
 
 // Testing Settings
@@ -149,7 +142,7 @@ int main()
             }
         }
         else
-            printf("New dataset generated.\n");
+            printf("============================================================================\nNew dataset generated. N = %d\n", dataSize);
         
         for(programRun = 0; programRun < nRuns; programRun++)
         {
@@ -195,12 +188,12 @@ int main()
             counter = 0;
             free(dataCopy);
 
-            /*
+            
             // Insertion Sort Testing
             dataCopy = createArrCopy(testArr, dataSize);
             printf("\nInsertion sort start ...\n");
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
-            //counter = bubbleSort(dataCopy, dataSize);         CALL INSERTION SORT HERE
+            counter = insertionSort(dataCopy, dataSize);
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
             printf("Insertion sort end ...\n");
             if(!isAFK)
@@ -239,7 +232,7 @@ int main()
             dataCopy = createArrCopy(testArr, dataSize);
             printf("\nSelection sort start ...\n");
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &begin);
-            //counter = bubbleSort(dataCopy, dataSize);         CALL SELECTION SORT HERE
+            counter = selectionSort(dataCopy, dataSize);
             clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
             printf("Selection sort end ...\n");
             if(!isAFK)
@@ -273,7 +266,6 @@ int main()
             }
             counter = 0;
             free(dataCopy);
-            */
 
             // Merge Sort Testing
             dataCopy = createArrCopy(testArr, dataSize);
@@ -394,14 +386,11 @@ int main()
             free(dataCopy);
             
             if(!isAFK)
+            #if _WIN32 || _WIN64   
                 system("PAUSE");
-
-            // This will delay code execution by 5 seconds to reset the randomizer seed
-            // This will be removed after all algos are implemented
-            #if _WIN32 || _WIN64
-                Sleep(INTERVAL*1000);
             #else 
-                sleep(INTERVAL);
+                printf("Press any key to continue.\n");
+                char dump = getch();
             #endif
         }
         
@@ -410,9 +399,9 @@ int main()
         double countAve;
 
         FILE *fp = fopen(LOGNAME, "a");
-        printf("\nTest Summary:\n\n");
+        printf("\nTest Summary: (N = %d)\n\n", dataSize);
         time_t currTime; time(&currTime);
-        fprintf(fp, "\n\nTest Summary:\n%s\n", ctime(&currTime));
+        fprintf(fp, "\n\nTest Summary: (N = %d)\n%s\n", dataSize, ctime(&currTime));
 
         // Bubble Sort
         timeAve = metSums[0] / nRuns;
@@ -459,8 +448,8 @@ int main()
         countAve = (double) counterSums[5] / (double) nRuns;
         printf("Radix Sort Average MET = %.20lf\n", timeAve);
         printf("Radix Sort Average TFC = %lf\n\n", countAve);
-        fprintf(fp, "Algo6 Sort Average MET,%.20lf\n", timeAve);
-        fprintf(fp, "Algo6 Sort Average TFC,%lf\n\n", countAve);
+        fprintf(fp, "Radix Sort Average MET,%.20lf\n", timeAve);
+        fprintf(fp, "Radix Sort Average TFC,%lf\n\n", countAve);
 
         fprintf(fp, "\nITERATION END\n\n\n");
 
@@ -473,7 +462,7 @@ int main()
     system("PAUSE");
 #else
     printf("Press any key to continue.\n");
-    char dump = getch();
+    char dump2 = getch();
 #endif
 
     return 0;
