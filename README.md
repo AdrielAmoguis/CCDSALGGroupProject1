@@ -26,19 +26,19 @@ The test might last a maximum of one entire week. Having M = 20 and N = 2 millio
 ### Testing Machine Specifications
 
 #### Main Testing System - DigitalOcean Server Droplet
-Operating System: Ubuntu 20.04 LTS
-CPU: 2 KVM Virtualized Cores
-Memory: 2GB RAM
-Storage: SSD
+Operating System: Ubuntu 20.04 LTS<br>
+CPU: 2 KVM Virtualized Cores <br>
+Memory: 2GB RAM <br>
+Storage: SSD <br>
 
 #### Backup Testing System 1 - Raspberry Pi 3
-Operating System: Raspbian Jessie (Debian Based)
-CPU: ARM64 Based Processor (Quad Core)
-Memory: Onboard 4GB RAM
-Storage: 64GB Class 10 SD Card
+Operating System: Raspbian Jessie (Debian Based) <br>
+CPU: ARM64 Based Processor (Quad Core) <br>
+Memory: Onboard 4GB RAM <br>
+Storage: 64GB Class 10 SD Card <br>
 
 #### Backup Testing System 2 (Last Resort) - Custom PC
-Operating System: Windows 10
-CPU: AMD A10 - 4 Cores 8 Threads
-Memory: 8GB HyperX DDR3
-Storage: 4TB SATA HDD
+Operating System: Windows 10 <br>
+CPU: AMD A10 - 4 Cores 8 Threads <br>
+Memory: 8GB HyperX DDR3 <br>
+Storage: 4TB SATA HDD <br>
