@@ -12,8 +12,8 @@
 Testing phase is currently ongoing. If you wish to also do some testing, you may download the executable binary file from Github's releases section. Great work!
 
 ## Test Status
-- [Main System] : Preparing to Start
-- [Backup 1] : Preparing to Start
+- [Main System] : Started Testing (9:30 PM - August 16, 2020)
+- [Backup 1] : Started Testing (9:30 PM - August 16, 2020)
 - [Backup 2] : Standby
 
 ### Testing Guidelines
