@@ -93,7 +93,7 @@ int main()
     unsigned long long counterSums[6] = {0,0,0,0,0,0};
     double metSums[6] = {0,0,0,0,0,0};
 
-    printf("Run CCDSALG specs-based test script? (N = 1024 -> 524288), M = 12 [y/N]: ");
+    printf("Run CCDSALG specs-based test script? (N = 1024 -> 134217728), M = 12 [y/N]: ");
     scanf(" %c", &cChoice);
 
     do
