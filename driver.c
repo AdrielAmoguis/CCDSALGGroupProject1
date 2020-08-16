@@ -30,7 +30,7 @@
 #define LOGNAME "OutputData.csv"
 
 // Testing Settings
-#define N_LIMIT 10
+#define N_LIMIT 17
 #define M_ITERATIONS 12
 
 // Struct
@@ -75,7 +75,7 @@ int * createArrCopy(int * arr, int size)
 
 int main()
 {
-    int testN[] = {1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576, 2097152};
+    int testN[] = {1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608, 16777216, 33554432, 67108864, 134217728};
     int currN = 0;
     bool isAFK = true, doLogging = false, useScript = false;
     int nRuns, programRun, dataSize;
