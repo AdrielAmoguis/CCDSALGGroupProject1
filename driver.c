@@ -459,6 +459,22 @@ int main()
         fclose(fp);
         free(testArr);
         currN++;
+
+        // Reset sums
+        metSums[0] = 0;
+        metSums[1] = 0;
+        metSums[2] = 0;
+        metSums[3] = 0;
+        metSums[4] = 0;
+        metSums[5] = 0;
+
+        counterSums[0] = 0;
+        counterSums[1] = 0;
+        counterSums[2] = 0;
+        counterSums[3] = 0;
+        counterSums[4] = 0;
+        counterSums[5] = 0;
+
     } while(useScript && currN <= N_LIMIT);
     
 #if _WIN32 || _WIN64
