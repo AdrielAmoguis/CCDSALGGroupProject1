@@ -5,15 +5,15 @@
 - [COMPLETE] Assign Algorithms to Group Members
 - [COMPLETE] Research Code Snippets & Study Their Implementation
 - [COMPLETE] Modify Source Codes As Specified
-- [ONGOING] Testing Phase
+- [COMPLETE] Testing Phase
 - [ONGOING] Documentation
 
 ## Testing Phase
 Testing phase is currently ongoing. If you wish to also do some testing, you may download the executable binary file from Github's releases section. Great work!
 
 ## Test Status
-- [Main System] : Restarted (2:12 AM - August 17, 2020) - Currently at N = 2 million
-- [Backup 1] : Restarted (11:45 PM - August 16, 2020) - Currently at N = 500 K
+- [Main System] : Crashed via Segmentation Fault at 2 Million (August 19, 2020) : Finished until 1 million
+- [Backup 1] : Restarted (11:45 PM - August 16, 2020) - Currently at N = 1 million
 - [Backup 2] : Standby
 
 ### Testing Guidelines
